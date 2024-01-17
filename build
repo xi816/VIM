@@ -1,0 +1,3 @@
+#!/bin/bash
+gcc -Wall -Wextra -ferror-limit=200 src/main.c -o vm
+

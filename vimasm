@@ -1,0 +1,37 @@
+#!/usr/bin/python3
+import sys
+from dataclasses import dataclass
+
+struct = dict
+t_Token = object
+t_TokenType = int
+
+# Tokens:
+#   INSTR
+#   LIT_INT
+def LexerNewToken(type_: t_TokenType, value: str, pos: tuple):
+  return {"object": "Token", ".type": type_, ".value": value, ".pos": pos}
+
+def TokenReadable(token: t_Token):
+  text = ""
+  if (token["type"] == 0):
+    text += "Instruction"
+  elif (token["type"] == 1):
+    text += "Number"
+  else:
+    assert (False), f"In TokenReadable: Unreachable TokenType {token['type']}"
+
+def LexerTokenize(src_file: struct):
+  src = src_file["code"]
+  assert (False), "LexerTokenize is not implemented yet!"
+
+if (__name__ == "__main__"):
+  argv = sys.argv[1:]
+  argc = len(argv)
+  program_name, *argv = argv
+  src = {"filename": program_name, "code": ""}
+
+  with open(program_name, "r") as fl:
+    src["code"] = fl.read()
+  tokens = LexerTokenize(src)
+
